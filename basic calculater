@@ -1,0 +1,188 @@
+import math
+print("\t CALCULATOR\n")
+
+def menu():
+ print("0) exit")    
+ print("1) sum")
+ print("2) subtraction")
+ print("3) multiplication")
+ print("4) square")
+ print("5) cube")
+ print("6) square_root")
+ print("7) cube_root")
+ print("8) logarithm")
+ print("9) factorial")
+
+
+ 
+menu()
+
+try:
+    n = int(input("\n \tEnter the choice no. :- "))
+except ValueError:
+    print("\n• Invalid selection ⚠️")
+    print("• kindly, re-check input 🙏🏻")
+    try:
+        n = int(input("\n \tRe-enter the choice no. :- "))
+    except ValueError:
+        print("Exit...")
+        n = 0
+
+while(n!=0):
+ 
+ if(n==0):
+     print("Thank you for use !!!")
+ if(n>9 or n<0):
+    print("\n \n• Invalid selection ⚠️")
+    print("• kindly,re-check input 🙏🏻")
+    x=input("\n \tRe-enter the choice no. :- ")
+    n=int(x)
+    if(n>9 or n<0):
+         n=0
+         print("Exit...")
+         break 
+    
+ if(n==1):
+    print("\n• you can input multiple decimal numbers for sum...")
+    print("• Enter '0' (zero) for final sum...")
+    l=[]
+    while(True):
+        
+       a=float(input("\n Enter number :- "))
+       l.append(a)
+       if(a==0):
+           print("\n \tThank you for input🙏🏻 ")
+           break
+    print(f"\n \n your final sum = {sum(l)}")  
+    
+ elif(n==2):
+    a=float(input("\n Enter number :- "))
+    b=float(input("\n Enter number :- "))
+    print("\n \tThank you for input🙏🏻 ")
+    print(f"\n \n your final subtraction = {a-b}")
+    
+    
+ elif(n==3):
+    print("\n• you can input multiple decimal numbers for multiplication...")
+    print("• Enter 0️⃣(zero) for final multiplication")
+    l=[]
+    while(True):
+        
+       a=float(input("\n Enter number :- "))
+       if(a==0):
+           print("\n \tThank you for input🙏🏻 ")
+           break
+       l.append(a)  
+    mul=1
+    x=len(l)
+    for i in range(0,x):
+       mul=mul*l[i]       
+    print(f"\n \n your final multiplication = {mul}")
+    
+ elif(n==4):
+       a=float(input("\n Enter number :- "))
+       print("\n \tThank you for input🙏🏻 ")
+       print(f"\n \n your square = {a**2}") 
+       
+ elif(n==5): 
+    a=float(input("\n Enter number :- "))
+    print("\n \tThank you for input🙏🏻 ")
+    print(f"\n \n your cube = {a**3}")  
+    
+ elif(n==6):
+       a=float(input("\n Enter number :- "))
+       if(a<0):
+           print("• Negative number not allowed⚠️")
+           a=float(input("\n please Re-enter number :- "))
+       print("\n \tThank you for input🙏🏻 ")
+       print(f"\n \n your square root = {a**(1/2)}") 
+       
+ elif(n==7): 
+    a=float(input("\n Enter number :- "))
+    print("\n \tThank you for input🙏🏻 ")
+    if(a<0):
+        a=0-a
+        print(f"\n \n your cube root = -{a**(1/3)}")  
+    else:
+        print(f"\n \n your cube root = {a**(1/3)}")  
+ elif(n==8): 
+    
+    print("\n1) Base : 'e'")
+    print("2) Base : 10")
+    print("3) Base : other")
+    x=int(input("\nChoice for base :- "))
+    if(x > 3 or x < 1):
+        print("\n \n• Invalid selection ⚠️")
+        print("• kindly,re-check input 🙏🏻")
+        x=int(input("\nChoice for base :- "))
+    if(x==3):
+      a=float(input("\n Enter exponent :- ")) 
+      if(a<0):
+           print("\n• Negative number not allowed⚠️")
+           print("• 0️⃣ isn't allowed as exponent ⚠️")
+           a=float(input("\n please Re-enter exponent :- "))       
+      base=float(input("\n Enter base :- "))
+      if(base<0 ):
+           print("\n• Negative number not allowed⚠️")
+           base=float(input("\n please Re-enter base :- "))
+      if(base==1 or base ==0):
+           print("\n• 0️⃣ and 1️⃣ isn't allowed in base⚠️")
+           base=float(input("\n please Re-enter base :- "))
+      print(f"\n \n your log value = {math.log(a,base)}")
+    if(x==2):
+        a=float(input("\n Enter exponent :- "))  
+        if(a<0):
+           print("\n• Negative number not allowed⚠️")
+           print("• 0️⃣ isn't allowed as exponent ⚠️")
+           a=float(input("\n please Re-enter exponent :- "))         
+        print(f"\n \n your log value = {math.log(a,10)}")
+    if(x==1):
+        a=float(input("\n Enter exponent :- "))   
+        if(a<0):
+           print("\n• Negative number not allowed⚠️")
+           print("• 0️⃣ isn't allowed as exponent ⚠️")
+           a=float(input("\n please Re-enter exponent :- "))       
+        print(f"\n \n your log value = {math.log(a)}")    
+    
+ elif(n==9):
+        a=int(input("\n Enter number :- "))
+        if(a<0):
+           print("• Negative number not allowed⚠️")
+           a=int(input("\n please Re-enter number :- ")) 
+
+        fac=1
+        for i in range(1,a+1):
+           fac*=i   
+        print(f"\n \n your factorial = {fac}")
+ 
+ # to repeat just repeat menu at end so value of n can be changed...       
+ print("\n")
+ menu()
+ try:
+    n = int(input("\n \tEnter next choice no. :- "))
+ except ValueError:
+    print("\n• Invalid selection ⚠️")
+    print("• kindly, re-check input 🙏🏻")
+    try:
+        n = int(input("\n \tRe-enter the choice no. :- "))
+    except ValueError:
+        try:
+            n = int(input("\n \tEnter the choice no. :- "))
+        except ValueError:
+            print("\n• Invalid selection ⚠️")
+            print("• kindly, re-check input 🙏🏻")
+            try:
+                n = int(input("\n \tRe-enter the choice no. :- "))
+            except ValueError:
+              n = 0
+ 
+ if(n==0):
+     print("\n \n \tThank you for use🙏🏻🙏🏻 !!!")
+     print("Exit...")
+ if(n<0 or n >9 ): 
+     print("\n Invalid choice⚠️")
+     x=input("\n kindly,Re-enter the choice no. :- ")
+     n=int(x) 
+     if(n<0 or n >9): 
+         print("\n \n \tThank you for use🙏🏻🙏🏻 !!!")
+         n=0          
