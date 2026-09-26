@@ -1,10 +1,5 @@
 #    expenses tracker
 
-# This is a "dict inside a dict" (a nested dictionary).
-# The outer dict has category names as keys (food, transport, etc.)
-# Each of those keys holds ANOTHER dict as its value.
-# That inner dict will store: expense_name -> list of prices
-# Example after some entries: {"food": {"pizza": [300, 250], "milk": [40]}}
 dictionary_collection = {
     "food": {},
     "transport": {},
@@ -65,9 +60,7 @@ def add_expenses():
 
      if purchase_type in dictionary_collection.keys():
 
-                # here we're checking the INNER dict (dictionary_collection[purchase_type])
-                # to see if this exact expense name was already added before
-
+                
                 if purchase in dictionary_collection[purchase_type].keys():
                         dictionary_collection[purchase_type][purchase].append(price)
                 else:
@@ -77,11 +70,6 @@ def add_expenses():
 
      
 def check_expenses():
-
-        # total_sum and sum_collection are NOT defined inside this function.
-        # they're created in the main while loop below (outside any function)
-        # and this function just reads them. Python allows this because
-        # they're treated as "global" variables here.
 
         print(f"\n\tYour total expenses(in rupees) = {total_sum}\n")
         for name1,total1 in sum_collection.items():
@@ -105,14 +93,6 @@ def categorywise():
      print("9) 💰 Personal — miscellaneous personal spending\n")               
      cat_choice=input("Enter category name: ")
 
-     # NOTE: the "else" below belongs to the "for" loop, not to the "if".
-     # This is a lesser-known Python feature called a for-else: the else
-     # block runs once the for loop finishes, UNLESS the loop hit a "break".
-     # Since there's no "break" anywhere in this loop, this else will
-     # ALWAYS run after the loop ends, even when a match WAS found above.
-     # That's why "Data doesn't exist..." can print even after showing
-     # correct data — worth fixing with a break inside the if, or an
-     # "if/else" instead of "for/else" if you want to look into it later.
      for name1,total1 in dictionary_collection.items():
           if(name1==cat_choice):
                 print(f"\n\t{name1 :- }\n")
@@ -136,9 +116,6 @@ while(list_choice!="0"):
      gifts_sum=0
      personal_sum=0
 
-     # for each category, we loop through the inner dict's VALUES
-     # (each value is a list of prices, e.g. [300, 250]) and add up
-     # every list into one running total using sum()
      for prices in dictionary_collection["transport"].values():
            transport_sum += sum(prices)
      for prices in dictionary_collection["food"].values():
@@ -159,10 +136,6 @@ while(list_choice!="0"):
            personal_sum += sum(prices)                                           
      total_sum = personal_sum+gifts_sum+health_sum+bills_sum+entertainment_sum+shopping_sum+education_sum+transport_sum+food_sum    
 
-     # another dict here: just a simple lookup table mapping
-     # "category_sum" -> the total number we just calculated above.
-     # This is NOT nested (values are plain numbers, not dicts/lists),
-     # it's only here so check_expenses() can loop through all totals easily.
      sum_collection={
            "transport_sum" : transport_sum,
            "food_sum" : food_sum, 
