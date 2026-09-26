@@ -1,6 +1,5 @@
 # ============================================================
 #                     📒 CONTACT DIARY
-#         A simple CLI-based phonebook manager in Python
 # ============================================================
 
 # 📦 Pre-loaded contacts dictionary  →  { name : number }
@@ -76,7 +75,7 @@ def add_contact():
 
     f_name = input("\n Enter first name : ")
     l_name = input("\n Enter last name : ")
-    cont   = digits_error()                       # Validate the phone number
+    cont   = digits_error()                       # Validate the phone numbe
 
     name = f_name + " " + l_name                 # Combine into full name
     contact.update({name : cont})                 # Add/update entry in dict
@@ -111,7 +110,6 @@ def find():
         name   = f_name + " " + l_name
 
         try:
-            # data available before error raise then print Data available and the data not found
             print(f"\n\t • Data available \n📋 {name} : {contact[name]} ")  # KeyError if not found
         except:
             print("\n Data not found⚠️")
@@ -120,8 +118,6 @@ def find():
     elif(find_choice == 2):
         search = digits_error()                   # Get + validate number
 
-        # ☠️  'name' and 'cont' here are loop variables (like 'i' in range())
-        # ☠️  Don't reuse 'search' as the loop variable — it would get overwritten
         for name, cont in contact.items():
             if(cont == search):
                 print(f"\n {name} : {search}")
